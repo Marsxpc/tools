@@ -1,0 +1,23 @@
+QTreeWidget::branch:has-siblings:!adjoins-item {
+    border-image: url(':/img/vline.png') 0;
+}
+
+QTreeWidget::branch:has-siblings:adjoins-item {
+    border-image: url(':/img/branch-more.png') 0;
+}
+
+QTreeWidget::branch:!has-children:!has-siblings:adjoins-item {
+    border-image: url(':/img/branch-end.png') 0;
+}
+
+QTreeWidget::branch:has-children:!has-siblings:closed,
+QTreeWidget::branch:closed:has-children:has-siblings {
+    border-image: none;
+    image: url(':/img/branch-closed.png');
+}
+
+QTreeWidget::branch:open:has-children:!has-siblings,
+QTreeWidget::branch:open:has-children:has-siblings  {
+    border-image: none;
+    image: url(':/img/branch-open.png');
+}
