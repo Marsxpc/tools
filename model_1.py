@@ -289,8 +289,11 @@ class WindowClass(QTabWidget):
         flag = False
         if not os.path.isdir(urlA) and os.path.exists(urlA):
             try:
+                # 借助PIL获得图片原尺寸
                 im = Image.open(urlA)
-                img = QImage(urlA)
+                with open(urlA, 'rb') as f:
+                    img_content = f.read()
+                img = QImage.fromData(img_content)
                 pixA = QPixmap.fromImage(img.scaled(self.imgAdapt(self.labelA,im)))
                 self.labelA.setPixmap(pixA)
                 flag = True
@@ -298,8 +301,11 @@ class WindowClass(QTabWidget):
                 pass
         if not os.path.isdir(urlB) and os.path.exists(urlB):
             try:
+                # 借助PIL获得图片原尺寸
                 im = Image.open(urlB)
-                img = QImage(urlB)
+                with open(urlB, 'rb') as f:
+                    img_content = f.read()
+                img = QImage.fromData(img_content)
                 pixB = QPixmap.fromImage(img.scaled(self.imgAdapt(self.labelB,im)))
                 self.labelB.setPixmap(pixB)
                 flag = True
